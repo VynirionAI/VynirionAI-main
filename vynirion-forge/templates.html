@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Styles — Vynirion Forge</title>
+  <meta name="description" content="Preview both design directions available from Vynirion Forge. Local Trust (clean, light) and Premium Modern (dark, bold). Both are fully customized for your business.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">F</div>
+      <div class="nav-logo-wrap">
+        <span class="nav-logo-name">Vynirion Forge</span>
+        <span class="nav-logo-sub">Web Design &amp; Hosting</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="templates.html" class="active">Templates</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Free Quote</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="templates.html" class="active">Templates</a>
+    <a href="contact.html" class="mob-cta">Get a Free Quote</a>
+  </div>
+
+  <div class="mobile-cta-bar">
+    <a href="contact.html"><i class="fa-solid fa-comment-dots"></i> Get a Free Quote</a>
+  </div>
+
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="label">Design Styles</div>
+      <h1>Two Directions.<br><em>Both Built Around You.</em></h1>
+      <p>These are live previews of our two design directions. Every site we build uses one of these as a foundation, then we customize the colors, content, photos, and copy end-to-end for your business.</p>
+    </div>
+  </div>
+
+
+  <!-- TIER TOGGLE + TEMPLATE VIEWER -->
+  <section>
+    <div class="wrap">
+
+      <!-- Tier toggle tabs -->
+      <div class="tier-toggle-wrap">
+        <div class="tier-tabs" role="tablist" aria-label="Design style selection">
+          <button type="button" class="tier-tab active" id="tab-t1" role="tab" aria-selected="true" aria-controls="tier-1" onclick="setTier(1)">
+            <i class="fa-solid fa-sun" style="font-size:.8em;margin-right:5px;"></i> Local Trust
+          </button>
+          <button type="button" class="tier-tab" id="tab-t2" role="tab" aria-selected="false" aria-controls="tier-2" onclick="setTier(2)">
+            <i class="fa-solid fa-moon" style="font-size:.8em;margin-right:5px;"></i> Premium Modern
+          </button>
+        </div>
+        <span class="tier-desc" id="tier-desc">Clean, professional, and approachable. Great for most local service businesses.</span>
+      </div>
+
+      <!-- Layout: viewer + sidebar -->
+      <div class="template-layout">
+
+        <!-- Main preview area -->
+        <div>
+
+          <!-- Tier 1 — Local Trust (Live iframe) -->
+          <div id="tier-1" class="tier-view active" role="tabpanel" aria-labelledby="tab-t1">
+            <div style="margin-bottom:14px;">
+              <h3 style="font-size:1.05rem;font-weight:800;color:var(--slate);margin-bottom:4px;">Local Trust Style</h3>
+              <p style="font-size:.87rem;color:var(--gray-500);">Light, clean, and professional. Built for landscaping, lawn care, handyman, pressure washing, cleaning, and general trades. Scroll inside the preview to explore the full site.</p>
+            </div>
+            <div class="template-viewer">
+              <div class="viewer-bar">
+                <div class="viewer-dots">
+                  <div class="viewer-dot"></div>
+                  <div class="viewer-dot"></div>
+                  <div class="viewer-dot"></div>
+                </div>
+                <div class="viewer-url">Local Trust — Template Preview</div>
+                <a href="demos/tier1/index.html" target="_blank" rel="noopener" class="viewer-open">
+                  Open Full Size <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75em;"></i>
+                </a>
+              </div>
+              <iframe
+                src="demos/tier1/index.html"
+                class="template-iframe"
+                title="Local Trust style — live template preview"
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:.76rem;color:var(--gray-500);font-weight:500;">Best fit:</span>
+              <span style="background:var(--teal-light);color:var(--teal-dark);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Landscaping</span>
+              <span style="background:var(--teal-light);color:var(--teal-dark);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Handyman</span>
+              <span style="background:var(--teal-light);color:var(--teal-dark);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Pressure Washing</span>
+              <span style="background:var(--teal-light);color:var(--teal-dark);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Cleaning</span>
+              <span style="background:var(--teal-light);color:var(--teal-dark);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Painting</span>
+            </div>
+          </div>
+
+          <!-- Tier 2 — Premium Modern (Live iframe) -->
+          <div id="tier-2" class="tier-view" role="tabpanel" aria-labelledby="tab-t2">
+            <div style="margin-bottom:14px;">
+              <h3 style="font-size:1.05rem;font-weight:800;color:var(--slate);margin-bottom:4px;">Premium Modern Style</h3>
+              <p style="font-size:.87rem;color:var(--gray-500);">Dark, bold, and high-end. Signals premium pricing and stands out instantly. Built for roofing, auto detailing, HVAC, and businesses competing at the top of their market. Scroll inside the preview to explore.</p>
+            </div>
+            <div class="template-viewer">
+              <div class="viewer-bar">
+                <div class="viewer-dots">
+                  <div class="viewer-dot"></div>
+                  <div class="viewer-dot"></div>
+                  <div class="viewer-dot"></div>
+                </div>
+                <div class="viewer-url">Premium Modern — Template Preview</div>
+                <a href="demos/tier2/index.html" target="_blank" rel="noopener" class="viewer-open">
+                  Open Full Size <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75em;"></i>
+                </a>
+              </div>
+              <iframe
+                src="demos/tier2/index.html"
+                class="template-iframe"
+                title="Premium Modern style — live template preview"
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:.76rem;color:var(--gray-500);font-weight:500;">Best fit:</span>
+              <span style="background:var(--slate);color:var(--emerald);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Roofing</span>
+              <span style="background:var(--slate);color:var(--emerald);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Auto Detailing</span>
+              <span style="background:var(--slate);color:var(--emerald);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">HVAC</span>
+              <span style="background:var(--slate);color:var(--emerald);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Concrete</span>
+              <span style="background:var(--slate);color:var(--emerald);font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:100px;">Pool Services</span>
+            </div>
+          </div>
+
+        </div><!-- /main preview -->
+
+
+        <!-- Sidebar -->
+        <div class="template-sidebar">
+
+          <div class="sidebar-card" style="margin-bottom:16px;">
+            <h3>Every design includes</h3>
+            <span class="sidebar-tag">All Packages</span>
+            <ul class="sidebar-included">
+              <li><i class="fa-solid fa-check"></i> Mobile-first layout</li>
+              <li><i class="fa-solid fa-check"></i> Your brand colors and logo</li>
+              <li><i class="fa-solid fa-check"></i> Custom copy for your services</li>
+              <li><i class="fa-solid fa-check"></i> Contact and quote form</li>
+              <li><i class="fa-solid fa-check"></i> Google Maps integration</li>
+              <li><i class="fa-solid fa-check"></i> Fast load speed</li>
+              <li><i class="fa-solid fa-check"></i> Local SEO basics</li>
+            </ul>
+            <a href="contact.html" class="btn btn-em" style="width:100%;justify-content:center;">Get a Free Quote</a>
+          </div>
+
+          <div class="sidebar-card">
+            <h3 style="margin-bottom:12px;">Browse by Industry</h3>
+            <div class="template-cats-list">
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-leaf"></i> Landscaping</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-house"></i> Roofing</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-car-side"></i> Auto Detailing</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-spray-can"></i> Pressure Washing</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-wrench"></i> Handyman</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-paint-roller"></i> Painting</a>
+              <a href="contact.html" class="tcat-item"><i class="fa-solid fa-ellipsis"></i> Other Trades</a>
+            </div>
+          </div>
+
+        </div><!-- /sidebar -->
+      </div><!-- /template-layout -->
+
+    </div>
+  </section>
+
+
+  <!-- WHAT GETS CUSTOMIZED -->
+  <section class="bg-light">
+    <div class="wrap">
+      <div class="section-header center">
+        <div class="label">What Gets Customized</div>
+        <h2 class="h2">The Design is the Starting Point, Not the Finish Line</h2>
+        <p class="lead">Every detail is adjusted for your specific business before anything goes live.</p>
+      </div>
+
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3>Your Colors and Brand</h3>
+          <p>Your logo colors, fonts, and brand identity carry through every page. The palette in the preview gets replaced with yours.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Your Copy, Written for You</h3>
+          <p>We write the headlines, service descriptions, and calls-to-action specifically for your business and the customers you want to attract.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>Your Service Area</h3>
+          <p>Your city and service area woven into the copy and metadata so you show up when locals search for what you do.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-list-check"></i></div>
+          <h3>Your Services, Structured Right</h3>
+          <p>Service sections built around what you actually offer, not a generic placeholder list that has to be stripped out.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-image"></i></div>
+          <h3>Your Photos or Curated Stock</h3>
+          <p>Your work photos make the biggest impact. No photos yet? We pull relevant stock images that match your trade and feel on-brand.</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fa-solid fa-phone"></i></div>
+          <h3>Your Contact and Booking Info</h3>
+          <p>Phone number, email, service area, hours, and contact form all wired up and ready before the site goes live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Ready to See What Your Site Could Look Like?</h2>
+      <p>Tell us about your business and which style you prefer. We'll reach out within one business day to talk through your project.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-em btn-lg"><i class="fa-solid fa-comment-dots"></i> Get a Free Quote</a>
+        <a href="services.html" class="btn btn-outline-w">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-link">
+            <div class="footer-brand-mark">F</div>
+            <span class="footer-brand-name">Vynirion Forge</span>
+          </a>
+          <p class="footer-tagline">Launch-ready websites for local businesses and contractors. Built around your services, your market, and your goals.</p>
+          <p class="footer-powered">A <a href="https://vynirionai.com">VynirionAI</a> brand.</p><!-- UPDATE -->
+          <div class="footer-socials" style="margin-top:14px;">
+            <a href="#" class="fsoc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="fsoc" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="fsoc" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="templates.html">Templates</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Website Packages</a></li>
+            <li><a href="services.html#care">Care Plans</a></li>
+            <li><a href="templates.html">Design Styles</a></li>
+            <li><a href="contact.html">Free Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="contact.html">Landscaping</a></li>
+            <li><a href="contact.html">Roofing</a></li>
+            <li><a href="contact.html">Auto Detailing</a></li>
+            <li><a href="contact.html">Pressure Washing</a></li>
+            <li><a href="contact.html">Handyman</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Vynirion Forge. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="https://vynirionai.com">VynirionAI</a><!-- UPDATE -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="back-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

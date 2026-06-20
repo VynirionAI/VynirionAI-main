@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+       PAGE TITLE & META DESCRIPTION
+       - Update the title with the real business name and city
+       - Keep the description under 160 characters
+       - This shows up in Google search results
+       ============================================================ -->
+  <title>Green Edge Landscaping | Professional Lawn & Landscape Services</title>
+  <meta name="description" content="Green Edge Landscaping delivers reliable lawn care, landscaping, and outdoor services for homeowners in [City]. Licensed, insured. Free estimates.">
+
+  <!-- ============================================================
+       OPEN GRAPH TAGS
+       - Controls how this site looks when shared on Facebook,
+         text messages, iMessage, etc.
+       - Update og:title, og:description, og:url, and og:image
+       - og:image should be a real photo (min 1200x630px recommended)
+       ============================================================ -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Green Edge Landscaping | [City]'s Trusted Lawn Care">
+  <meta property="og:description" content="Professional lawn care and landscaping in [City]. Licensed, insured, and satisfaction guaranteed. Call for a free estimate.">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:image" content="https://yourdomain.com/preview-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- ============================================================
+       LOCAL BUSINESS SCHEMA MARKUP
+       - This is invisible to visitors but tells Google exactly
+         what this business is, where it operates, and how to
+         reach it. Helps with local search rankings.
+       - Update: name, telephone, address, url, description
+       - Keep openingHours format exactly as shown
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Green Edge Landscaping",
+    "description": "Professional lawn care, landscaping, irrigation, and outdoor maintenance services for homeowners in [City] and surrounding areas.",
+    "telephone": "+15550001234",
+    "email": "info@greenedge.com",
+    "url": "https://yourdomain.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "[City]",
+      "addressRegion": "[State]",
+      "addressCountry": "US"
+    },
+    "openingHours": ["Mo-Sa 07:00-18:00"],
+    "priceRange": "$$",
+    "areaServed": ["[City]", "[Nearby Town 1]", "[Nearby Town 2]", "[Nearby Town 3]"],
+    "sameAs": [
+      "https://www.facebook.com/YOURPAGE",
+      "https://www.google.com/maps?cid=YOURGOOGLECID"
+    ]
+  }
+  </script>
+
+  <!-- Fonts & Icons (loaded from CDN — no install needed) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ============================================================
+       CSS RESET & VARIABLES
+       - Color palette and global values live here
+       - To change the brand color, update --green and --green-light
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2d6a4f;
+      --green-light: #40916c;
+      --green-pale: #d8f3dc;
+      --accent: #52b788;
+      --dark: #1b1f23;
+      --gray: #6b7280;
+      --light: #f9fafb;
+      --white: #ffffff;
+      --radius: 10px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      /* Extra bottom padding on mobile so content clears the sticky call bar */
+      padding-bottom: 0;
+    }
+    @media (max-width: 768px) {
+      body { padding-bottom: 66px; }
+    }
+
+    /* ============================================================
+       NAVIGATION BAR
+       - Fixed to top of screen at all times
+       - Update phone number here: search "(555) 000-1234"
+       - To change logo text, find class="logo" in the HTML
+       ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: var(--white); border-bottom: 1px solid #e5e7eb;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo { font-size: 1.25rem; font-weight: 800; color: var(--green); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo i { font-size: 1.4rem; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: var(--white) !important;
+      padding: 10px 20px; border-radius: var(--radius); font-weight: 600;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--green-light) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--dark); }
+
+    /* ============================================================
+       MOBILE DROPDOWN NAV
+       - Shown when hamburger is tapped on small screens
+       ============================================================ */
+    .mobile-nav {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--white); border-bottom: 1px solid #e5e7eb;
+      padding: 20px 5%; z-index: 998; flex-direction: column; gap: 14px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--dark); text-decoration: none; font-weight: 500; font-size: 1rem; padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+    .mobile-nav .nav-cta { background: var(--green); color: var(--white) !important; padding: 12px 20px; border-radius: var(--radius); text-align: center; border: none; }
+
+    /* ============================================================
+       STICKY MOBILE CALL BAR
+       - Fixed to the bottom of the screen on mobile only
+       - Replaces tapping around to find the phone number
+       - Update phone number and href="tel:..." to match the real number
+       ============================================================ */
+    .mobile-call-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--green);
+      padding: 0;
+    }
+    .mobile-call-bar a {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 20px;
+      color: var(--white); text-decoration: none; font-weight: 700; font-size: 1rem;
+    }
+    .mobile-call-bar a i { font-size: 1.1rem; }
+    @media (max-width: 768px) {
+      .mobile-call-bar { display: block; }
+    }
+
+    /* ============================================================
+       BACK TO TOP BUTTON
+       - Appears in bottom-right corner after scrolling down 400px
+       - Positioned above the mobile call bar on small screens
+       ============================================================ */
+    .back-top {
+      position: fixed; bottom: 28px; right: 24px; z-index: 998;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      border: none; cursor: pointer; font-size: 1rem;
+      display: none; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2); transition: background 0.2s;
+    }
+    .back-top:hover { background: var(--green-light); }
+    .back-top.visible { display: flex; }
+    @media (max-width: 768px) {
+      .back-top { bottom: 78px; }
+    }
+
+    /* ============================================================
+       HERO SECTION
+       - Main banner at the top of the page
+       - Left side: headline, CTA buttons, stats
+       - Right side: photo placeholder — REPLACE with real image
+       ============================================================ */
+    .hero {
+      margin-top: 68px;
+      padding: 100px 5% 80px;
+      background: linear-gradient(135deg, #f0faf4 0%, #e8f5e9 100%);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-pale); color: var(--green);
+      padding: 6px 14px; border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 span { color: var(--green); }
+    .hero p { font-size: 1.1rem; color: var(--gray); margin-bottom: 36px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--green); color: var(--white); padding: 15px 28px;
+      border-radius: var(--radius); font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 14px rgba(45,106,79,0.35);
+    }
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--white); color: var(--green); padding: 15px 28px;
+      border-radius: var(--radius); font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid var(--green); transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--green-pale); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 44px; }
+    .stat-num { font-size: 1.75rem; font-weight: 800; color: var(--green); }
+    .stat-label { font-size: 0.8rem; color: var(--gray); font-weight: 500; }
+
+    /* ============================================================
+       HERO IMAGE PLACEHOLDER
+       - Remove the entire .hero-image div and replace with:
+         <img src="your-photo.jpg" alt="Description" class="hero-img">
+       - Recommended photo: crew working or finished lawn, landscape
+       ============================================================ */
+    .hero-image {
+      border-radius: 16px; overflow: hidden;
+      background: linear-gradient(135deg, #b7e4c7, #52b788);
+      aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; display: block; }
+    .hero-image-placeholder { text-align: center; color: rgba(255,255,255,0.9); }
+    .hero-image-placeholder i { font-size: 5rem; margin-bottom: 12px; display: block; }
+    .hero-image-placeholder p { font-size: 0.9rem; font-weight: 600; }
+
+    /* ============================================================
+       TRUST BAR
+       - Green strip below hero with quick trust signals
+       - These are key objection-killers for new visitors
+       ============================================================ */
+    .trust-bar {
+      background: var(--green); padding: 20px 5%;
+      display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 0.9rem; font-weight: 500; }
+    .trust-item i { font-size: 1.1rem; opacity: 0.85; }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+       ============================================================ */
+    section { padding: 80px 5%; }
+    .section-label { color: var(--accent); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 14px; }
+    .section-sub { color: var(--gray); font-size: 1.05rem; max-width: 540px; }
+    .section-header { margin-bottom: 50px; }
+
+    /* ============================================================
+       SERVICES SECTION
+       - 6 service cards in a responsive grid
+       - To add/remove a service: copy or delete a .service-card block
+       - Update the icon (fa-*), title, and description in each card
+       ============================================================ */
+    .services { background: var(--light); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .service-card {
+      background: var(--white); border-radius: var(--radius); padding: 32px 28px;
+      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); border-bottom-color: var(--green); }
+    .service-icon {
+      width: 52px; height: 52px; background: var(--green-pale); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 1.4rem; margin-bottom: 18px;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .service-card p { font-size: 0.9rem; color: var(--gray); }
+
+    /* ============================================================
+       WHY CHOOSE US SECTION
+       - Left: decorative image placeholder (replace with real photo)
+       - Right: 4 trust bullet points
+       - Update the bullet text to match real business differentiators
+       ============================================================ */
+    .why-us { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .why-image {
+      background: linear-gradient(135deg, #d8f3dc, #b7e4c7);
+      border-radius: 16px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    }
+    .why-image i { font-size: 6rem; color: var(--green); opacity: 0.6; }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+    .why-list li { display: flex; gap: 14px; align-items: flex-start; }
+    .why-list li i { color: var(--green); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+    .why-list li strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    .why-list li span { font-size: 0.9rem; color: var(--gray); }
+
+    /* ============================================================
+       REVIEWS / TESTIMONIALS SECTION
+       - 3 review cards
+       - To update: change the review text, reviewer initials,
+         reviewer name, and neighborhood/location
+       - Keep reviews sounding natural and specific
+       ============================================================ */
+    .reviews { background: var(--light); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .review-card { background: var(--white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+    .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 14px; }
+    .review-text { color: var(--dark); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--green-pale); display: flex; align-items: center;
+      justify-content: center; color: var(--green); font-weight: 700; font-size: 1rem; flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 0.9rem; }
+    .reviewer-loc { font-size: 0.8rem; color: var(--gray); }
+
+    /* ============================================================
+       SERVICE AREA SECTION
+       - List the cities/towns the business actually serves
+       - Replace [City], [Nearby Town X] with real place names
+       - Helps with local SEO and customer confidence
+       ============================================================ */
+    .service-area { background: var(--white); }
+    .area-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 40px; }
+    .area-item {
+      background: var(--light); border-radius: var(--radius);
+      padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+      font-weight: 600; font-size: 0.92rem; color: var(--dark);
+      border: 1px solid #e5e7eb;
+    }
+    .area-item i { color: var(--green); font-size: 0.85rem; }
+    .area-note { margin-top: 22px; font-size: 0.9rem; color: var(--gray); }
+    .area-note a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .area-note a:hover { text-decoration: underline; }
+
+    /* ============================================================
+       FAQ SECTION
+       - Accordion-style questions and answers
+       - To add a question: copy a full .faq-item block
+       - To remove: delete the .faq-item block
+       - Update the question text in <button> and answer in <div>
+       ============================================================ */
+    .faq { background: var(--light); }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 740px; }
+    .faq-item { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer; text-align: left; font-family: inherit;
+      font-size: 0.98rem; font-weight: 700; color: var(--dark);
+    }
+    .faq-question i { color: var(--green); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-question i { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+      padding: 0 24px; font-size: 0.93rem; color: var(--gray); line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+
+    /* ============================================================
+       QUOTE FORM SECTION
+       - Connected to Formspree for form submissions
+       - IMPORTANT: Replace YOUR_FORM_ID in the <form> action below
+       - Get your form ID at formspree.io after creating a free account
+       - Success and error messages shown inline after submit
+       ============================================================ */
+    .quote { background: var(--white); }
+    .quote-inner {
+      max-width: 680px; margin: 0 auto; background: var(--light);
+      border-radius: 16px; padding: 48px 40px; box-shadow: var(--shadow);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px;
+      font-size: 0.95rem; font-family: inherit; color: var(--dark);
+      transition: border-color 0.2s; background: var(--white);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      grid-column: 1 / -1; background: var(--green); color: var(--white);
+      border: none; padding: 16px; border-radius: var(--radius);
+      font-size: 1rem; font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: var(--green-light); }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+    .form-note { text-align: center; font-size: 0.8rem; color: var(--gray); margin-top: 12px; }
+    /* Success and error states shown after form submission */
+    .form-success, .form-error {
+      text-align: center; padding: 40px 20px;
+    }
+    .form-success i { font-size: 3rem; color: var(--green); margin-bottom: 14px; display: block; }
+    .form-error i { font-size: 3rem; color: #ef4444; margin-bottom: 14px; display: block; }
+    .form-success h3, .form-error h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+    .form-success p, .form-error p { color: var(--gray); font-size: 0.95rem; }
+
+    /* ============================================================
+       FOOTER
+       - Update business name, services list, phone, email, city/state
+       - Social media links: replace # with real URLs
+       ============================================================ */
+    footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: 48px 5% 28px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand .logo { color: var(--white); margin-bottom: 12px; display: inline-flex; }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { color: var(--white); font-weight: 700; margin-bottom: 16px; font-size: 0.95rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-contact li { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+    .footer-contact i { color: var(--accent); width: 16px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px; font-size: 0.8rem;
+    }
+    .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+    /* ============================================================
+       RESPONSIVE BREAKPOINTS
+       - 900px: switches hero and why-us to single column
+       - 640px: hides desktop nav, shows hamburger
+       ============================================================ */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 5%; }
+      .hero-image { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-image { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .form-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 20px; justify-content: flex-start; padding: 16px 5%; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .quote-inner { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       - Logo links back to top of page
+       - Phone number in top-right — update href="tel:..." and display text
+       - Hamburger button appears on mobile
+       ============================================================ -->
+  <nav>
+    <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Green Edge</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#service-area">Service Area</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="tel:+15550001234" class="nav-cta"><i class="fa-solid fa-phone"></i> (555) 000-1234</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open Menu"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <!-- Mobile dropdown menu -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#why-us" onclick="closeMenu()">About</a>
+    <a href="#reviews" onclick="closeMenu()">Reviews</a>
+    <a href="#service-area" onclick="closeMenu()">Service Area</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#quote" onclick="closeMenu()">Get a Quote</a>
+    <a href="tel:+15550001234" class="nav-cta"><i class="fa-solid fa-phone"></i> Call Now: (555) 000-1234</a>
+  </div>
+
+  <!-- ============================================================
+       STICKY MOBILE CALL BAR
+       - Only visible on screens smaller than 768px
+       - Update href="tel:..." and the display number
+       ============================================================ -->
+  <div class="mobile-call-bar">
+    <a href="tel:+15550001234">
+      <i class="fa-solid fa-phone"></i> Tap to Call — (555) 000-1234
+    </a>
+  </div>
+
+  <!-- Back to top button (appears after scrolling) -->
+  <button class="back-top" id="backTop" onclick="scrollToTop()" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ============================================================
+       HERO SECTION
+       - Update headline to reflect the business's strongest selling point
+       - Update the subheadline city name
+       - Stats (12+, 500+, 5★) — update to real numbers when available
+       - RIGHT SIDE IMAGE: Replace the .hero-image div with a real photo:
+         <img src="images/hero.jpg" alt="Green lawn after service" class="hero-img">
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-star"></i> Trusted by 500+ Homeowners</div>
+      <h1>Your Lawn, <span>Done Right.</span> Every Time.</h1>
+      <p>Green Edge Landscaping takes care of your outdoor space so you can enjoy it — without the hassle. Serving [City] and surrounding neighborhoods.</p>
+      <div class="hero-actions">
+        <a href="tel:+15550001234" class="btn-primary"><i class="fa-solid fa-phone"></i> Call for a Free Quote</a>
+        <a href="#quote" class="btn-secondary"><i class="fa-solid fa-file-lines"></i> Request Online</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Years in Business</div></div>
+        <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Happy Clients</div></div>
+        <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Avg. Rating</div></div>
+      </div>
+    </div>
+
+    <!-- HERO IMAGE: Replace contents with <img src="..." alt="..." class="hero-img"> -->
+    <div class="hero-image">
+      <div class="hero-image-placeholder">
+        <i class="fa-solid fa-seedling"></i>
+        <p>Replace with hero photo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST BAR
+       - Quick confidence signals below the hero
+       - Update text if the business has different certifications
+       ============================================================ -->
+  <div class="trust-bar">
+    <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Fully Licensed & Insured</div>
+    <div class="trust-item"><i class="fa-solid fa-clock"></i> Same-Week Scheduling</div>
+    <div class="trust-item"><i class="fa-solid fa-handshake"></i> Satisfaction Guaranteed</div>
+    <div class="trust-item"><i class="fa-solid fa-tag"></i> Free Estimates</div>
+  </div>
+
+  <!-- ============================================================
+       SERVICES SECTION
+       - 6 service cards — update icons, titles, and descriptions
+       - To add a service: copy one .service-card block and paste it
+       - Icon reference: fontawesome.com/icons (free, solid style)
+       ============================================================ -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Services Designed Around Your Property</h2>
+      <p class="section-sub">From weekly mowing to full yard transformations, we have you covered year-round.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+        <h3>Lawn Mowing & Maintenance</h3>
+        <p>Regular mowing, edging, and cleanup to keep your lawn looking its best all season long.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-spa"></i></div>
+        <h3>Landscape Design & Install</h3>
+        <p>Custom planting plans, mulch beds, and hardscaping that fit your style and budget.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-droplet"></i></div>
+        <h3>Irrigation & Sprinkler Systems</h3>
+        <p>Smart watering systems installed and serviced to protect your lawn and lower your water bill.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-tree"></i></div>
+        <h3>Tree & Shrub Trimming</h3>
+        <p>Professional pruning and shaping to keep your trees and shrubs healthy and looking sharp.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+        <h3>Leaf Removal & Cleanups</h3>
+        <p>Spring and fall yard cleanups that clear debris and set your lawn up for the next season.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>Fertilization & Weed Control</h3>
+        <p>Targeted lawn treatments that promote thick, green growth and keep weeds out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY CHOOSE US SECTION
+       - LEFT SIDE IMAGE: Replace the .why-image div with a real photo
+         <img src="images/team.jpg" alt="Our team" style="width:100%;border-radius:16px;">
+       - Update bullet points to reflect real business strengths
+       ============================================================ -->
+  <section class="why-us" id="why-us">
+    <div class="why-grid">
+      <!-- IMAGE PLACEHOLDER: Replace with real photo of crew or finished yard -->
+      <div class="why-image">
+        <i class="fa-solid fa-house-chimney"></i>
+      </div>
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">Neighbors Helping Neighbors</h2>
+        <p class="section-sub">We started this business right here in [City] and we're proud to serve the community we call home.</p>
+        <ul class="why-list">
+          <li><i class="fa-solid fa-circle-check"></i><div><strong>We Show Up — Every Time</strong><span>Reliable scheduling, no no-shows, and a team that communicates clearly.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><strong>Fair, Upfront Pricing</strong><span>You get a detailed quote before any work starts — no surprise charges.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><strong>Crew You Can Trust</strong><span>Background-checked, professional, and respectful of your property.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><strong>Local Knowledge</strong><span>We know [region] soil, seasons, and grass types — so your lawn thrives.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS / TESTIMONIALS
+       - Update reviewer initials, name, and neighborhood
+       - Keep review text authentic-sounding — avoid overly salesy language
+       - Add a 4th card by copying a .review-card block if needed
+       ============================================================ -->
+  <section class="reviews" id="reviews">
+    <div class="section-header">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What Your Neighbors Are Saying</h2>
+      <p class="section-sub">Real feedback from real homeowners in the [City] area.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="review-text">"Green Edge completely transformed our front yard. They came on time, cleaned up everything, and the lawn has never looked better. Will be using them every season."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JM</div>
+          <div><div class="reviewer-name">Jennifer M.</div><div class="reviewer-loc">Oakwood Heights</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="review-text">"I've had two other companies flake on me. These guys showed up exactly when they said they would and did incredible work. Pricing was totally fair for what we got."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RT</div>
+          <div><div class="reviewer-name">Robert T.</div><div class="reviewer-loc">Maple Creek</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="review-text">"We hired them for a full yard cleanup before we listed our home. Got three offers above asking price — I honestly think the curb appeal made a real difference."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SP</div>
+          <div><div class="reviewer-name">Sarah P.</div><div class="reviewer-loc">Birchwood Estates</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICE AREA SECTION
+       - Replace placeholder city names with the actual towns served
+       - The "Not sure?" line links to the quote form
+       - Adding more cities here also helps local SEO
+       ============================================================ -->
+  <section class="service-area" id="service-area">
+    <div class="section-header">
+      <div class="section-label">Where We Work</div>
+      <h2 class="section-title">Proudly Serving These Communities</h2>
+      <p class="section-sub">We cover [City] and the surrounding area. Don't see your town? Give us a call — we may still be able to help.</p>
+    </div>
+    <div class="area-grid">
+      <!-- Replace each city name with real service area locations -->
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [City]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 1]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 2]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 3]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 4]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 5]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 6]</div>
+      <div class="area-item"><i class="fa-solid fa-location-dot"></i> [Nearby Town 7]</div>
+    </div>
+    <p class="area-note">Not seeing your area? <a href="#quote">Send us a message</a> and we'll let you know if we can make it work.</p>
+  </section>
+
+  <!-- ============================================================
+       FAQ SECTION
+       - Click any question to expand/collapse the answer
+       - Update questions and answers to match common real customer questions
+       - To add more: copy a full .faq-item block
+       ============================================================ -->
+  <section class="faq" id="faq">
+    <div class="section-header">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Questions We Hear a Lot</h2>
+      <p class="section-sub">Still have something we didn't cover? Just call or send a message — we're happy to help.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you offer free estimates? <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">Yes — every estimate is completely free. We'll come out to your property, take a look, and give you a clear written quote before any work begins. No pressure, no commitment.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Are you licensed and insured? <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">Absolutely. We're fully licensed and carry general liability insurance as well as workers' compensation. You're protected either way, but we've never had a claim.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do I need to be home when you come? <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">Not at all. Most of our clients aren't home during service. As long as we can access your yard, we'll take care of everything and send you a note when we're done.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How quickly can you get started? <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">In most cases we can schedule your first visit within the same week. During peak season it may take a few extra days, but we'll always give you an honest timeline upfront.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I'm not happy with the results? <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">We stand behind our work 100%. If something isn't right, call us within 48 hours and we'll come back and fix it at no extra charge. Your satisfaction isn't just a promise — it's our policy.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       QUOTE FORM
+       - IMPORTANT: Replace YOUR_FORM_ID with your Formspree form ID
+         1. Go to formspree.io and create a free account
+         2. Create a new form and copy the form ID from the URL
+         3. Paste it into the action attribute below
+       - The form submits via AJAX — visitors see a success message
+         without leaving the page
+       ============================================================ -->
+  <section class="quote" id="quote">
+    <div class="quote-inner">
+      <div class="section-label" style="text-align:center;">Free Estimate</div>
+      <h2 class="section-title" style="text-align:center;">Get Your Free Quote Today</h2>
+      <p style="text-align:center; color: var(--gray); margin-bottom: 4px;">Fill out the form and we'll get back to you within 24 hours — usually sooner.</p>
+
+      <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="form-grid">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="first_name" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="last_name" placeholder="Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@email.com" required>
+        </div>
+        <div class="form-group full">
+          <label for="address">Property Address</label>
+          <input type="text" id="address" name="address" placeholder="123 Main St, City, State">
+        </div>
+        <div class="form-group full">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="">Select a service...</option>
+            <option>Lawn Mowing & Maintenance</option>
+            <option>Landscape Design & Install</option>
+            <option>Irrigation & Sprinkler Systems</option>
+            <option>Tree & Shrub Trimming</option>
+            <option>Leaf Removal & Cleanup</option>
+            <option>Fertilization & Weed Control</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Tell us a bit about your project</label>
+          <textarea id="message" name="message" placeholder="Describe your yard, what you need done, and any questions you have..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          <i class="fa-solid fa-paper-plane"></i> Send My Free Quote Request
+        </button>
+      </form>
+      <p class="form-note"><i class="fa-solid fa-lock"></i> Your information is never shared. We'll only contact you about your request.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       - Update business name, tagline, city, year founded
+       - Update all contact details: phone, email, city/state, hours
+       - Add real social media links when available
+       ============================================================ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Green Edge</a>
+        <p>Professional landscaping for homeowners who care about their property. Serving [City] and surrounding areas since [Year].</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Lawn Mowing</a></li>
+          <li><a href="#services">Landscape Design</a></li>
+          <li><a href="#services">Irrigation</a></li>
+          <li><a href="#services">Tree Trimming</a></li>
+          <li><a href="#services">Weed Control</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <!-- Update all contact details below -->
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+15550001234">(555) 000-1234</a></li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:info@greenedge.com">info@greenedge.com</a></li>
+          <li><i class="fa-solid fa-location-dot"></i> [City], [State]</li>
+          <li><i class="fa-solid fa-clock"></i> Mon–Sat: 7am – 6pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Green Edge Landscaping. All rights reserved.</span>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       - Mobile nav toggle
+       - Smooth scrolling
+       - FAQ accordion
+       - Back-to-top button visibility
+       - Form AJAX submission with Formspree
+       ============================================================ -->
+  <script>
+    // Mobile nav open/close
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileNav').classList.remove('open');
+    }
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          closeMenu();
+        }
+      });
+    });
+
+    // FAQ accordion — opens clicked item, closes others
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Back-to-top button: show after scrolling 400px
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Form AJAX submission via Formspree
+    // Submits form data, then shows a success or error message inline
+    const form = document.getElementById('quoteForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            // Replace the form with a thank-you message
+            form.outerHTML = `
+              <div class="form-success">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>We got it — thank you!</h3>
+                <p>We'll review your request and get back to you within 24 hours. In the meantime, feel free to call us at <a href="tel:+15550001234" style="color:var(--green)">(555) 000-1234</a>.</p>
+              </div>`;
+          } else {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send My Free Quote Request';
+            form.insertAdjacentHTML('afterend', `
+              <div class="form-error" style="margin-top:16px;">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <h3>Something went wrong</h3>
+                <p>Please try again, or call us directly at <a href="tel:+15550001234">(555) 000-1234</a>.</p>
+              </div>`);
+          }
+        } catch {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send My Free Quote Request';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
